@@ -64,7 +64,7 @@ class SortAnchorNode(template.Node):
         self.title_is_var = title_is_var
 
     def render(self, context):
-        if self.title_is_var:
+        if self.title_is_var and self.title in context:
             self.title = context[self.title]
         request = context['request']
         getvars = request.GET.copy()
@@ -161,7 +161,11 @@ class SortedDataNode(template.Node):
                     else:
                         reverse = False
                         name = ordering
-                    context[key] = sorted(queryset, key=attrgetter(name), reverse=reverse)
+
+                    try:
+                        context[key] = sorted(queryset, key=attrgetter(name), reverse=reverse)
+                    except AttributeError:
+                        context[key] = queryset
                 else:
                     context[key] = queryset.order_by(ordering)
             except template.TemplateSyntaxError:
