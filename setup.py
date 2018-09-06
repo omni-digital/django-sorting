@@ -8,7 +8,7 @@ except ImportError:
     from distutils.core import setup
     package_list = ['django_sorting']
 
-version = '0.4+incuna.2'
+version = '0.4.2'
 
 setup(
     name='django-sorting',
