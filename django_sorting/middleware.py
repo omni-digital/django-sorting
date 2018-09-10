@@ -1,13 +1,13 @@
 def get_field(request):
     try:
-        field = request['sort']
+        field = request.GET['sort']
     except (KeyError, ValueError, TypeError):
         field = ''
     return (request.direction == 'desc' and '-' or '') + field
 
 def get_direction(request):
     try:
-        return request['dir']
+        return request.GET['dir']
     except (KeyError, ValueError, TypeError):
         return 'desc'
 
