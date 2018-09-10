@@ -103,8 +103,8 @@ class SortAnchorNode(template.Node):
 
 def autosort(parser, token):
     bits = [b.strip('"\'') for b in token.split_contents()]
-    help_msg = u'autosort tag synopsis: {%% autosort queryset [as '\
-        u'context_variable] %%}'
+    help_msg = 'autosort tag synopsis: {%% autosort queryset [as '\
+        'context_variable] %%}'
     context_var = None
 
     # Check if has not required "as new_context_var" part
@@ -179,7 +179,7 @@ class SortedDataNode(template.Node):
         else:
             context[key] = queryset
 
-        return u''
+        return ''
 
 
 anchor = register.tag(anchor)
