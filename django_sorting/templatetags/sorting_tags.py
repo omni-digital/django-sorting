@@ -87,7 +87,7 @@ class SortAnchorNode(template.Node):
         else:
             icon = ''
 
-        if len(list(getvars.keys())) > 0:
+        if len(getvars.keys()) > 0:
             urlappend = "&%s" % getvars.urlencode()
         else:
             urlappend = ''
